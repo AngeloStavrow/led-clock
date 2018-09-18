@@ -1,0 +1,149 @@
+/* CSS files add styling rules to your content */
+
+body {
+  background-color: #000;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+#clock {
+  display: block;
+  margin: auto;
+  height: 250px;
+  width: 1000px;
+/*   position: relative;
+  width: 50%; */
+}
+
+/* #clock:before {
+  content: "";
+  display: block;
+  padding-top: 25%;
+} */
+
+.number {
+  display: block;
+  float: left;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  width: 12.5%
+}
+
+ .colon {
+  display: block;
+  float: left;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  width: 8%
+}
+
+.dot {
+  background-color: #f00;
+  float: none;
+  height: 12.5%;
+  left: calc(100% /3);
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: calc(100% / 3);
+}
+
+.top {
+  top: 25%;
+}
+
+.bottom {
+  top: 62.5%;
+}
+
+.spacer {
+  display: block;
+  float: left;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  width: 3%;
+}
+
+/* SEGMENTS
+ *
+ *  111
+ * 2   3
+ * 2   3
+ * 2   3
+ *  444
+ * 5   6
+ * 5   6
+ * 5   6
+ *  777
+ *
+ */
+
+.active {
+  background-color: #f00 !important;
+  transition-property: background-color;
+  transition-duration: 0.25s;
+  z-index: 10;
+}
+
+.segment {
+  background-color: #300;
+  float: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+.segment-1 {
+  height: 12.5%;
+  left: 0;
+  top: 0;
+  width: 100%
+}
+
+.segment-2 {
+  height: 50%;
+  left: 0;
+  top: 0;
+  width: 25%;
+}
+
+.segment-3 {
+  height: 50%;
+  right: 0;
+  top: 0;
+  width: 25%;
+}
+
+.segment-4 {
+  height: 12.5%;
+  left: 0;
+  top: 43.75%;
+  width: 100%
+}
+
+.segment-5 {
+  height: 50%;
+  left: 0;
+  top: 50%;
+  width: 25%;
+}
+
+.segment-6 {
+  height: 50%;
+  right: 0;
+  top: 50%;
+  width: 25%;
+}
+
+.segment-7 {
+  height: 12.5%;
+  left: 0;
+  top: 87.5%;
+  width: 100%
+}
