@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LED Clock</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+  </head>  
+  <body>
+    <div id="clock">
+      <div class="number" name="hours-tens">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="number" name="hours-singles">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+      <div class="colon">
+        <div class="dot top"></div>
+        <div class="dot bottom"></div>
+      </div>
+      <div class="number" name="minutes-tens">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="number" name="minutes-singles">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+      <div class="colon">
+        <div class="dot top"></div>
+        <div class="dot bottom"></div>
+      </div>
+      <div class="number" name="seconds-tens">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="number" name="seconds-singles">
+        <div class="segment segment-1">
+        </div>
+        <div class="segment segment-2">
+        </div>
+        <div class="segment segment-3">
+        </div>
+        <div class="segment segment-4">
+        </div>
+        <div class="segment segment-5">
+        </div>
+        <div class="segment segment-6">
+        </div>
+        <div class="segment segment-7">
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      const hoursTens = document.querySelector('[name=hours-tens]');
+      const hoursSingles = document.querySelector('[name=hours-singles]');
+      const minutesTens = document.querySelector('[name=minutes-tens]');
+      const minutesSingles = document.querySelector('[name=minutes-singles]');
+      const secondsTens = document.querySelector('[name=seconds-tens]');
+      const secondsSingles = document.querySelector('[name=seconds-singles]');
+      const timecheck = document.querySelector('.time');
+      
+      // Draws the digit in the number div.
+      function drawNumber(number, digit) {
+        
+        /* SEGMENTS
+         *
+         *  111
+         * 2   3
+         * 2   3
+         * 2   3
+         *  444
+         * 5   6
+         * 5   6
+         * 5   6
+         *  777
+         *
+         */
+        
+        const segments = []
+        segments.push(number.getElementsByClassName('segment-1')[0]);
+        segments.push(number.getElementsByClassName('segment-2')[0]);
+        segments.push(number.getElementsByClassName('segment-3')[0]);
+        segments.push(number.getElementsByClassName('segment-4')[0]);
+        segments.push(number.getElementsByClassName('segment-5')[0]);
+        segments.push(number.getElementsByClassName('segment-6')[0]);
+        segments.push(number.getElementsByClassName('segment-7')[0]);
+        segments.map(segment => segment.classList.remove('active'));
+        
+        switch (digit) {
+          case 1:
+            segments[2].classList.add('active');
+            segments[5].classList.add('active');
+            break;
+          case 2:
+            segments[0].classList.add('active');
+            segments[2].classList.add('active');
+            segments[3].classList.add('active');
+            segments[4].classList.add('active');
+            segments[6].classList.add('active');
+            break;
+          case 3:
+            segments[0].classList.add('active');
+            segments[2].classList.add('active');
+            segments[3].classList.add('active');
+            segments[5].classList.add('active');
+            segments[6].classList.add('active');
+            break;
+          case 4:
+            segments[1].classList.add('active');
+            segments[2].classList.add('active');
+            segments[3].classList.add('active');
+            segments[5].classList.add('active');
+            break;
+          case 5:
+            segments[0].classList.add('active');
+            segments[1].classList.add('active');
+            segments[3].classList.add('active');
+            segments[5].classList.add('active');
+            segments[6].classList.add('active');
+            break;
+          case 6:
+            segments.map(segment => segment.classList.add('active'));
+            segments[2].classList.remove('active');
+            break;
+          case 7:
+            segments[0].classList.add('active');
+            segments[2].classList.add('active');
+            segments[5].classList.add('active');
+            break;
+          case 8:
+            segments.map(segment => segment.classList.add('active'));
+            break;
+          case 9:
+            segments.map(segment => segment.classList.add('active'));
+            segments[4].classList.remove('active');
+            break;
+          case 0:
+            segments.map(segment => segment.classList.add('active'));
+            segments[3].classList.remove('active');
+            break;
+          default:
+            break;
+        }
+      }
+      
+      function setDate() {
+        const now =  new Date();
+      
+        const tensOfSeconds = Math.floor(now.getSeconds() / 10);
+        const singleSeconds = now.getSeconds() - (tensOfSeconds * 10);
+        const tensOfMinutes = Math.floor(now.getMinutes() / 10);
+        const singleMinutes = now.getMinutes() - (tensOfMinutes * 10);
+        const tensOfHours = Math.floor(now.getHours() / 10);
+        const singleHours = now.getHours() - (tensOfHours * 10);
+                
+        drawNumber(hoursTens, tensOfHours);
+        drawNumber(hoursSingles, singleHours);
+        drawNumber(minutesTens, tensOfMinutes);
+        drawNumber(minutesSingles, singleMinutes);
+        drawNumber(secondsTens, tensOfSeconds);
+        drawNumber(secondsSingles, singleSeconds);
+      }
+      
+      setInterval(setDate, 1000);
+    </script>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>
